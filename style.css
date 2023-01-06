@@ -1,0 +1,126 @@
+/**
+ * Theme Name: jumper
+ */
+ @font-face {
+font-family: "Arcade"; 
+
+src: url("fonts/Arcade/ARCADE.TTF") format("truetype"); 
+font-style: normal; 
+font-weight: normal; 
+} 
+
+.container {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    background: #3ba2cb;
+}
+.jumper__wrapper {
+    height: 35%;
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: space-between;
+    overflow: hidden;
+    font-family: Arcade;
+}
+.jumper__cloud {
+    position: absolute;
+    height: 90px;
+    width: 173px;
+    background: url(images/cloud.png);
+    background-size: cover;
+    animation: cloudMove 7s infinite linear;
+    margin: 0 0 300px;
+    z-index: 999;
+}
+@keyframes cloudMove {
+    0%{
+        left:100%;
+    }
+    100%{
+        left:-190px;
+    }
+}
+
+#jumper__personage {
+    position: absolute;
+    margin: 0 0 0 136px;
+    height: 191px;
+    width: 94px;
+    background: url(images/boy.gif) no-repeat center;
+    background-size: cover;
+}
+.jumper__street {
+    position: absolute;
+    margin-top: 153px;
+    height: 3px;
+    width: 0;
+    background: #d7d6d6;
+    border-radius: 5px;
+}
+
+#jumper__obstacle {
+    height: 40px;
+    width: 40px;
+    border-radius: 33px;
+    margin: 71px 0 0;
+    background: repeating-linear-gradient(74deg, #ddff04, #ff0303bf 100px);
+    box-shadow: 3px 4px 9px #00000072;
+    animation: obstacleMove 2s infinite linear;
+    position: absolute;
+}
+@keyframes obstacleMove {
+    0%{
+        left:100%;
+    }
+    100%{
+        left:-153px;
+    }
+}
+
+.jump {
+    animation: jumpMove 1s linear;
+}
+@keyframes jumpMove {
+    0%{
+        background: url(images/boy-jump.png) no-repeat center;
+        background-size: cover;
+        height: 191px;
+        width: 94px;
+        top: 120px;
+    }
+    30%{
+        top: 30px;
+    }
+    50%{
+        top: 10px;
+    }
+    70%{
+        top: 30px;
+    }
+    100%{
+        background: url(images/boy-jump.png) no-repeat center;
+        background-size: cover;
+        height: 191px;
+        width: 94px;
+        top: 120px;
+    }
+}
+.jumper__over {
+    z-index: 999;
+    opacity: 0;
+    margin: 0 auto;
+    text-align: center;
+}
+.jumper__over-title {
+    font-size: 67px;
+    color: #a92121;
+}
+.jumper__information {
+    position: absolute;
+    right: 0;
+    top: 0;
+    margin: 10px;
+    z-index: 999;
+}
