@@ -32,7 +32,7 @@ font-weight: normal;
     background-size: cover;
     animation: cloudMove 7s infinite linear;
     margin: 0 0 300px;
-    z-index: 999;
+    z-index: 899;
 }
 @keyframes cloudMove {
     0%{
@@ -123,4 +123,14 @@ font-weight: normal;
     top: 0;
     margin: 10px;
     z-index: 999;
+}
+.jumper__health {
+    position: absolute;
+    top: 0;
+    z-index: 999;
+    margin: 10px;
+    background: url(images/health.png)repeat-x;
+    background-size: contain;
+    height: 20px;
+    width: 20px;
 }

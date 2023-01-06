@@ -5,6 +5,7 @@
 
 <div class="container">
     <div class="jumper__wrapper">
+        <div class="jumper__health"></div>
         <div class="jumper__cloud"></div>
         <div id="jumper__personage"></div>
         <div id="jumper__obstacle"></div>
@@ -18,12 +19,11 @@
 </div>
 
 <script>
-    let koll = 0;
+    let koll = 0,
+        health = 3;
     $( ".jumper__street" ).animate({
       width: "100%"
-    }, 2000, function() {
-      // Animation complete.
-    });
+    }, 2000);
     
     const personage = document.getElementById("jumper__personage");
     const obstracle = document.getElementById("jumper__obstacle");
@@ -42,14 +42,22 @@
     let isAlive = setInterval ( function() {
         let personageTop = parseInt(window.getComputedStyle(personage).getPropertyValue("top"));
         let obstracleLeft = parseInt(window.getComputedStyle(obstracle).getPropertyValue("left"));
+        $( ".jumper__health" ).css('width', health * 20 + 'px');
+
         if(obstracleLeft < 200 && obstracleLeft > 160 && personageTop >= 95) {
-            $( ".jumper__over-statistics" ).html('your bonus ' + koll);
-            $( "#jumper__obstacle" ).css('animation-play-state','paused');
-            $( ".jumper__information" ).css('display','none');
             $( "#jumper__obstacle" ).css('display','none');
-            $( ".jumper__over" ).animate({
-              opacity: "1"
-            }, 1000);
+            console.log(health);
+            if(health != 0){
+                health--;
+            }
+            else{
+                console.log('ok');
+                $( ".jumper__over-statistics" ).html('your bonus ' + koll);
+                $( ".jumper__information" ).css('display','none');
+                $( ".jumper__over" ).animate({
+                  opacity: "1"
+                }, 1000);
+            }
         }
         $( ".jumper__information" ).html(++koll);  
     }, 10)
